@@ -5,6 +5,9 @@ venv
 .picowgo
 .vscode/
 
+# MicroPico (https://github.com/paulober/MicroPico)
+.micropico
+
 # Config file
 configuration_old.py
 lib/
