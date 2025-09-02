@@ -12,7 +12,8 @@
     "ssid": "",
     "passphrase": "",
     "ntpEnabled": true,
-    "ntpPTZ": "GMT0"
+    "ntpPTZ": "GMT0",
+    "ntpHost": ""
   },
   "mqttConfig": {
     "enabled": false,

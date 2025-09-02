@@ -55,6 +55,10 @@ class Clock(App):
 
     def ntp_sync(self):
         if self.wifi_config.enabled and self.wifi_config.ntp_enabled:
+
+            if self.wifi_config.ntp_host != "":
+                ntptime.host = self.wifi_config.ntp_host
+
             try:
                 ntptime.settime()
             except:
