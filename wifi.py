@@ -49,6 +49,9 @@ class WLAN:
                 if self.configuration.ntp_host != "":
                     ntptime.host = self.configuration.ntp_host
                     print("Using NTP Host: " + self.configuration.ntp_host)
-                ntptime.settime()
-                local_time= localPTZtime.tztime(time.time(), self.configuration.ntp_ptz)
-                self.rtc.save_time(local_time[:8])
+                try:
+                    ntptime.settime()
+                    local_time= localPTZtime.tztime(time.time(), self.configuration.ntp_ptz)
+                    self.rtc.save_time(local_time[:8])
+                except:
+                    print("Could not sync time via NTP")
