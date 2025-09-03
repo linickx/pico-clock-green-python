@@ -51,7 +51,7 @@ class MQTT:
         self.client.connect()
         self.heartbeat(True)
         self.client.set_callback(self.mqtt_callback)
-        topic = self.configuration.prefix + "#"
+        topic = self.configuration.prefix + "/"
         self.client.subscribe(topic)
         print("Subscribed to " + topic)
 
@@ -74,17 +74,17 @@ class MQTT:
         self.send_state()
 
     def mqtt_callback(self, topic, msg):
-        t = topic.decode().lstrip(mqtt_prefix)
+        t = topic.decode().lstrip(self.configuration.prefix)
         for c in self.registered_callbacks:
             if t == c.topic:
                 c.callback(topic, msg)
 
     def send_event(self, topic: str, msg: str):
-        topic = mqtt_prefix + topic
+        topic = self.configuration.prefix + topic
         self.client.publish(topic, msg)
 
     def send_state(self):
-        self.client.publish(mqtt_base_topic, self.build_state())
+        self.client.publish(self.configuration.prefix, self.build_state())
 
     def build_state(self):
         state = dict()
