@@ -1,5 +1,18 @@
 # MicroPython Pico-Clock-Green
 
+## ✨ Nick's Dev Branch ✨
+
+This is a few personal tweaks to Dom Needham's awesome work.
+
+Additional Features:
+- NTP Sync Hourly
+- Custom NTP Servers
+- MQTT Authentication
+- MQTT Tweaks for Mosquitto/Home Assistant, *Your Miliage May Vary!*
+
+
+## Original ReadMe...
+
 Python port of the C code for the Waveshare [Pico-Clock-Green](https://www.waveshare.com/wiki/Pico-Clock-Green) product with support for MQTT (majority to be added) via the Pico W.
 
 > The original Python code of this project written by Malcolm and contributors ([GitHub link](https://github.com/malcolmholmes/pico-clock-green-python)). This will be a maintained fork with lots of more features added.
