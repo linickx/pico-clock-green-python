@@ -9,6 +9,7 @@ Additional Features:
 - Custom NTP Servers
 - MQTT Authentication
 - MQTT Tweaks for Mosquitto/Home Assistant, *Your Miliage May Vary!*
+- Check WiFi and reconnect if needed (Every 5mins)
 
 
 ## Original ReadMe...
