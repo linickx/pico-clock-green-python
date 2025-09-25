@@ -4,6 +4,7 @@ from display import Display
 from rtc import RTC
 from buttons import Buttons
 from configuration import Configuration
+from wifi import WLAN
 import helpers
 import time
 import ntptime
@@ -15,6 +16,7 @@ class Clock(App):
         App.__init__(self, APP_CLOCK)
         self.config = Configuration()
         self.wifi_config = Configuration().wifi_config
+        self.wlan = WLAN(scheduler)
         self.display = Display(scheduler)
         self.rtc = RTC()
         self.enabled = True
@@ -76,6 +78,10 @@ class Clock(App):
         if self.hour != t[3] or self.minute != t[4]:
             self.hour = t[3]
             self.minute = t[4]
+
+            if self.minute % 5 == 0 and self.second == 0:
+                if not self.wlan.wifi_connected():
+                    self.wlan.connect_to_wifi() # Reconnect to WiFi every 5 minutes if not connected
 
             if self.minute == 10 and self.second == 0:
                 if self.ntp_sync(): # Sync time via NTP every hour at HH:10:00
