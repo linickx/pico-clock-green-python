@@ -15,8 +15,13 @@ class WLAN:
         self.configuration = Configuration().wifi_config
         self.wlan = None
         self.rtc = RTC()
-        if self.configuration.enabled:
+        if self.configuration.enabled and self.wlan is None:
             self.connect_to_wifi()
+
+    def wifi_connected(self):
+        if self.wlan is not None and self.wlan.status() == 3:
+            return True
+        return False
 
     def connect_to_wifi(self):
         import network
